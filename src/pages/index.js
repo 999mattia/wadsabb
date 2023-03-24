@@ -9,7 +9,7 @@ export default function Home() {
   const [user, setUser] = useState('')
 
   async function sendMessage() {
-    const response = await fetch('https://wadsabb-api.onrender.com/messages', {
+    const response = await fetch('https://wadsabb.glitch.me/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export default function Home() {
   }
 
   async function fetchMessages() {
-    const response = await fetch('https://wadsabb-api.onrender.com/messages')
+    const response = await fetch('https://wadsabb.glitch.me/messages')
     const data = await response.json()
     data.reverse()
     setMessages(data)
