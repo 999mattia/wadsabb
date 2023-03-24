@@ -5,17 +5,19 @@ import { useState, useEffect } from 'react'
 export default function Home() {
   const [messages, setMessages] = useState([])
   const [userInput, setUserInput] = useState('')
+  const [message, setMessage] = useState('')
   const [user, setUser] = useState('')
 
-  async function postTestMessage() {
+  async function sendMessage() {
     const response = await fetch('https://wadsabb-api.onrender.com/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ text: 'test', user: user }),
+      body: JSON.stringify({ text: message, user: user }),
     })
     const data = await response.json()
+    setMessage('')
     fetchMessages()
   }
 
@@ -28,6 +30,10 @@ export default function Home() {
 
   const handleUserInputChange = (e) => {
     setUserInput(e.target.value);
+  };
+
+  const handleMessageInputChange = (e) => {
+    setMessage(e.target.value);
   };
 
   useEffect(() => {
@@ -47,7 +53,10 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className={styles.container}>
-          <button onClick={() => postTestMessage()}>send</button>
+          <form onSubmit={(e) => { e.preventDefault(); sendMessage() }}>
+            <input type="text" value={message} onChange={handleMessageInputChange}></input>
+            <button type="submit">Send</button>
+          </form>
           {messages.map((message) => {
             return (
               <p>{message.id} {message.user} {message.text}</p>

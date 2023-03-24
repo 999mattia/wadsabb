@@ -10,12 +10,8 @@
     "publish": "docker image build -t registry.gitlab.com/mattia.gisiger/347/chat . && docker login registry.gitlab.com && docker push registry.gitlab.com/mattia.gisiger/347/chat"
   },
   "dependencies": {
-    "@prisma/client": "^4.11.0",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "prisma": "^4.11.0"
   }
 }
