@@ -8,19 +8,19 @@ export default function Home() {
   const [user, setUser] = useState('')
 
   async function postTestMessage() {
-    const response = await fetch('/api/messages', {
+    const response = await fetch('https://wadsabb-api.onrender.com/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ text: 'test', user: 'test' }),
+      body: JSON.stringify({ text: 'test', user: user }),
     })
     const data = await response.json()
     fetchMessages()
   }
 
   async function fetchMessages() {
-    const response = await fetch('/api/messages')
+    const response = await fetch('https://wadsabb-api.onrender.com/messages')
     const data = await response.json()
     data.reverse()
     setMessages(data)
