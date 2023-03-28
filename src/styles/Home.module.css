@@ -1,0 +1,43 @@
+.usernameForm{
+    margin-top: 5vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.usernameFormHeader{
+    background-color: #01a91b;
+    padding: 5px;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.usernameFormMiddle{
+    width: 80%;
+    font-size: 1.1em;
+    padding-left: 10px;
+    border-left: 1px solid #01a91b;
+    border-right: 1px solid #01a91b;
+
+}
+
+.usernameFormBottom{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    border-left: 1px solid #01a91b;
+    border-right: 1px solid #01a91b;
+    border-bottom: 1px solid #01a91b;
+
+}
+
+.usernameFormButton{
+    width: 100%;
+    margin: 1.4em;
+    padding: 0.5em;
+}
+

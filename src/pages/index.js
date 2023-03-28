@@ -63,9 +63,20 @@ export default function Home() {
             )
           })}
         </div>
-      </> : <form onSubmit={() => setUser(userInput)}>
-        <input type="text" value={userInput} onChange={handleUserInputChange}></input>
-        <button type="submit">Submit</button>
+      </> : <form onSubmit={() => setUser(userInput)} >
+        <div className={styles.usernameForm}>
+          <div className={styles.usernameFormHeader}>Join WadsAbb</div>
+          <div className={styles.usernameFormMiddle}>        
+            <p>Username: </p>
+            <input type="text" value={userInput} onChange={handleUserInputChange}></input>
+            <p>We promise this is the best Chat</p>
+          </div>
+          <div className={styles.usernameFormBottom}>
+            <button className={styles.usernameFormButton} type="submit">Submit</button>
+
+            <div className={styles.button}>Hello</div>
+          </div>
+        </div>
       </form>
   )
 }
