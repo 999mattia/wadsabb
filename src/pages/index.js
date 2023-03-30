@@ -9,10 +9,11 @@ export default function Home() {
   const [user, setUser] = useState('')
   const chatContainerRef = useRef(null)
   const [test, setTest] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const [secretMessage, setSecretMessage] = useState('')
 
   async function sendMessage() {
-    //setMessage(secretMessage != '' ? secretMessage : message)
+    chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     let newMessage;
     if (secretMessage != "") {
       newMessage = secretMessage
@@ -65,15 +66,15 @@ export default function Home() {
     const interval = setInterval(() => {
       fetchMessages()
     }, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
 
   useEffect(() => {
-    if (chatContainerRef.current) {
+    if (chatContainerRef.current && !scrolled) {
       // Scroll to the bottom of the chat container
-      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight -10000;
+      setScrolled(true)
     }
 
   }, messages);
