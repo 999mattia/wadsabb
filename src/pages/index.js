@@ -78,9 +78,6 @@ export default function Home() {
 
   }, messages);
 
-
-
-
   return (
     user != '' ?
       <>
@@ -89,6 +86,11 @@ export default function Home() {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+        <div className={styles.headerContainer}>
+                <div className={styles.headerFiller}></div>
+                <div className={styles.headerFiller}><img className={styles.logo} src="/Logo.png" ></img></div>
+                <div className={styles.headerFiller}><div onClick={() => {localStorage.removeItem("UserName"); setUser('')}}><img className={styles.accountIcon} src="/account.png"></img></div></div>
+        </div>
         <div className={styles.container}>
           <div className={styles.allMessageContainer} ref={chatContainerRef}>
             {messages.map((message) => {
@@ -109,14 +111,6 @@ export default function Home() {
               </button>
             </div>
           </form>
-
-          <div className={styles.formsLogout}>
-            <form onSubmit={(e) => { e.preventDefault(); sendMessage() }}>
-              <input type="text" value={message} onChange={handleMessageInputChange}></input>
-              <button type="submit">Send</button>
-            </form>
-            {localStorage.getItem("UserName") != null && <button onClick={() => {localStorage.removeItem("UserName"); setUser('')}} id="LogOutButton">Log Out</button>}
-          </div>  
         </div>
       </> : <form onSubmit={() => handleUserSubmit()} >
         <div className={styles.usernameForm}>
