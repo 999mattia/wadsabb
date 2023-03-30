@@ -46,6 +46,7 @@
     border: none;
     color: white;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .inputField{
@@ -71,11 +72,77 @@
     flex-direction: column;
 }
 
-.messageContainer{
-    max-height: calc(100vh - 106.4px);
+
+
+
+
+
+.messageForm{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 3em;
+    padding: 0.3em;
+    background-color: whitesmoke;
+}
+
+.messageInput{
+    width: 80%;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border: 2px solid #01a91b;
+    border-radius: 5px;
+}
+
+.sendButtonContainer{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sendButton{
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.sendButtonIcon{
+    width: 3em;
+    height: auto;
+}
+
+.allMessageContainer{
+    max-height: calc(100vh - 150px);
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
 }
 
 .singleMessage{
     margin-bottom: 10px;
+    /*display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;*/
+    max-width: 50%;
+    line-break: anywhere;
+    font-size: larg;
+
+    
+}
+
+.username{
+    color: #01a91b;
+    font-size: medium;
+}
+
+.loggedIn{
+}
+
+.loggedOut{
 }

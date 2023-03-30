@@ -49,9 +49,9 @@ export default function Home() {
 
   useEffect(() => {
     if (chatContainerRef.current) {
-    // Scroll to the bottom of the chat container
-    chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-  }
+      // Scroll to the bottom of the chat container
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
 
   }, messages);
 
@@ -67,18 +67,24 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className={styles.container}>
-          <div className={styles.messageContainer} ref={chatContainerRef}>
+          <div className={styles.allMessageContainer} ref={chatContainerRef}>
             {messages.map((message) => {
               return (
                 <div className={styles.singleMessage}>
-                  <p>{message.id} {message.user} {message.text}</p>
+                  <p className={styles.username}>{message.user}</p>
+                  {message.user == user ? <div className={styles.loggedIn}><p>{message.text}</p></div> : <div className={styles.loggedOut}><p>{message.text}</p></div>}
+                  
                 </div>
               )
             })}
           </div>
-          <form onSubmit={(e) => { e.preventDefault(); sendMessage() }}>
-            <input type="text" value={message} onChange={handleMessageInputChange}></input>
-            <button type="submit">Send</button>
+          <form className={styles.messageForm} onSubmit={(e) => { e.preventDefault(); sendMessage() }}>
+            <input className={styles.messageInput} type="text" value={message} placeholder="Type in your message..." onChange={handleMessageInputChange}></input>
+            <div className={styles.sendButtonContainer}>
+              <button className={styles.sendButton} type="submit">
+                <img className={styles.sendButtonIcon} src="/send.png" alt='asdf'></img>
+              </button>
+            </div>
           </form>
 
         </div>
