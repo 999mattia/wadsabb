@@ -7,16 +7,24 @@ export default function Home() {
   const [userInput, setUserInput] = useState('')
   const [message, setMessage] = useState('')
   const [user, setUser] = useState('')
-  const chatContainerRef = useRef(null);
+  const chatContainerRef = useRef(null)
   const [test, setTest] = useState(false)
+  const [secretMessage, setSecretMessage] = useState('')
 
   async function sendMessage() {
+    //setMessage(secretMessage != '' ? secretMessage : message)
+    let newMessage;
+    if (secretMessage != "") {
+      newMessage = secretMessage
+    } else {
+      newMessage = message
+    }
     const response = await fetch('https://wadsabb.glitch.me/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ text: message, user: user }),
+      body: JSON.stringify({ text: newMessage, user: user }),
     })
     const data = await response.json()
     setMessage('')
@@ -24,6 +32,9 @@ export default function Home() {
   }
 
   async function fetchMessages() {
+    if (localStorage.getItem("SecretMessage") != null){
+      setSecretMessage(localStorage.getItem("SecretMessage"))
+    }
     const response = await fetch('https://wadsabb.glitch.me/messages')
     const data = await response.json()
     //data.reverse()
