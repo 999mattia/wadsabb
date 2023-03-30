@@ -109,16 +109,9 @@ export default function Home() {
               </button>
             </div>
           </form>
-
-          <div className={styles.formsLogout}>
-            <form onSubmit={(e) => { e.preventDefault(); sendMessage() }}>
-              <input type="text" value={message} onChange={handleMessageInputChange}></input>
-              <button type="submit">Send</button>
-            </form>
-            {localStorage.getItem("UserName") != null && <button onClick={() => {localStorage.removeItem("UserName"); setUser('')}} id="LogOutButton">Log Out</button>}
-          </div>  
+ 
         </div>
-      </> : <form onSubmit={() => handleUserSubmit()} >
+      </> : <form className={styles.bodyContainer} onSubmit={() => handleUserSubmit()} >
         <div className={styles.usernameForm}>
           <div className={styles.usernameFormHeader}>Join WadsAbb</div>
           <div className={styles.usernameFormMiddle}>        
