@@ -1,12 +1,14 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function Home() {
   const [messages, setMessages] = useState([])
   const [userInput, setUserInput] = useState('')
   const [message, setMessage] = useState('')
   const [user, setUser] = useState('')
+  const chatContainerRef = useRef(null);
+  const [test, setTest] = useState(false)
 
   async function sendMessage() {
     const response = await fetch('https://wadsabb.glitch.me/messages', {
@@ -24,7 +26,7 @@ export default function Home() {
   async function fetchMessages() {
     const response = await fetch('https://wadsabb.glitch.me/messages')
     const data = await response.json()
-    data.reverse()
+    //data.reverse()
     setMessages(data)
   }
 
@@ -44,6 +46,18 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
+
+  useEffect(() => {
+    if (chatContainerRef.current) {
+    // Scroll to the bottom of the chat container
+    chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+  }
+
+  }, messages);
+
+
+
+
   return (
     user != '' ?
       <>
@@ -53,28 +67,33 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className={styles.container}>
+          <div className={styles.messageContainer} ref={chatContainerRef}>
+            {messages.map((message) => {
+              return (
+                <div className={styles.singleMessage}>
+                  <p>{message.id} {message.user} {message.text}</p>
+                </div>
+              )
+            })}
+          </div>
           <form onSubmit={(e) => { e.preventDefault(); sendMessage() }}>
             <input type="text" value={message} onChange={handleMessageInputChange}></input>
             <button type="submit">Send</button>
           </form>
-          {messages.map((message) => {
-            return (
-              <p>{message.id} {message.user} {message.text}</p>
-            )
-          })}
+
         </div>
       </> : <form onSubmit={() => setUser(userInput)} >
         <div className={styles.usernameForm}>
           <div className={styles.usernameFormHeader}>Join WadsAbb</div>
           <div className={styles.usernameFormMiddle}>        
             <p>Username: </p>
-            <input type="text" value={userInput} onChange={handleUserInputChange}></input>
-            <p>We promise this is the best Chat</p>
+            <input className={styles.inputField} type="text" value={userInput} onChange={handleUserInputChange}></input>
+            <p className={styles.smallText}>We promise this is the best Chat!!</p>
           </div>
           <div className={styles.usernameFormBottom}>
             <button className={styles.usernameFormButton} type="submit">Submit</button>
 
-            <div className={styles.button}>Hello</div>
+            
           </div>
         </div>
       </form>

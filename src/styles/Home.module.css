@@ -37,7 +37,45 @@
 
 .usernameFormButton{
     width: 100%;
-    margin: 1.4em;
-    padding: 0.5em;
+    margin: 1em;
+    margin-top: 1em;
+    padding: 0.1em;
+    font-size: large;
+    font-weight: bold;
+    background-color: #01a91b;
+    border: none;
+    color: white;
+    border-radius: 10px;
 }
 
+.inputField{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    width: 80%;
+}
+
+.smallText{
+    font-size: small;
+    margin-top: 0.5em;
+}
+
+
+
+
+
+.container{
+    width: 100%;
+    max-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+}
+
+.messageContainer{
+    max-height: calc(100vh - 106.4px);
+    overflow-y: scroll;
+}
+
+.singleMessage{
+    margin-bottom: 10px;
+}
