@@ -79,3 +79,10 @@
 .singleMessage{
     margin-bottom: 10px;
 }
+
+.formsLogout{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    gap: 1%;
+}

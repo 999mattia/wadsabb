@@ -35,6 +35,9 @@ export default function Home() {
     if (localStorage.getItem("SecretMessage") != null){
       setSecretMessage(localStorage.getItem("SecretMessage"))
     }
+    if (localStorage.getItem("UserName") != null){
+      setUser(localStorage.getItem("UserName"))
+    }
     const response = await fetch('https://wadsabb.glitch.me/messages')
     const data = await response.json()
     //data.reverse()
@@ -47,6 +50,15 @@ export default function Home() {
 
   const handleMessageInputChange = (e) => {
     setMessage(e.target.value);
+  };
+
+  function handleUserSubmit() {
+    if (userInput.length < 3){
+      alert("Username Too short")
+    } else {
+      localStorage.setItem("UserName", userInput)
+      setUser(userInput)
+    }
   };
 
   useEffect(() => {
@@ -87,13 +99,15 @@ export default function Home() {
               )
             })}
           </div>
-          <form onSubmit={(e) => { e.preventDefault(); sendMessage() }}>
-            <input type="text" value={message} onChange={handleMessageInputChange}></input>
-            <button type="submit">Send</button>
-          </form>
-
+          <div className={styles.formsLogout}>
+            <form onSubmit={(e) => { e.preventDefault(); sendMessage() }}>
+              <input type="text" value={message} onChange={handleMessageInputChange}></input>
+              <button type="submit">Send</button>
+            </form>
+            {localStorage.getItem("UserName") != null && <button onClick={() => {localStorage.removeItem("UserName"); setUser('')}} id="LogOutButton">Log Out</button>}
+          </div>  
         </div>
-      </> : <form onSubmit={() => setUser(userInput)} >
+      </> : <form onSubmit={() => handleUserSubmit()} >
         <div className={styles.usernameForm}>
           <div className={styles.usernameFormHeader}>Join WadsAbb</div>
           <div className={styles.usernameFormMiddle}>        
