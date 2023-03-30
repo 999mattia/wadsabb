@@ -48,6 +48,7 @@
     width: 80%;
     font-size: 1.1em;
     padding-left: 10px;
+    padding-right: 10px;
     border-left: 1px solid #01a91b;
     border-right: 1px solid #01a91b;
 
@@ -81,7 +82,7 @@
     border: 1px solid gray;
     border-radius: 5px;
     padding: 5px;
-    width: 80%;
+    width: 100%;
 }
 
 .smallText{
@@ -183,4 +184,24 @@
     flex-direction: row;
     width: auto;
     gap: 1%;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 1000px) {
+    .bodyContainer{
+        display: flex;
+        justify-content: center;
+    }
+
+    .usernameForm{
+        width: 50%;
+    }
+    
 }

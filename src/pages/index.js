@@ -112,8 +112,9 @@ export default function Home() {
               </button>
             </div>
           </form>
+ 
         </div>
-      </> : <form onSubmit={() => handleUserSubmit()} >
+      </> : <form className={styles.bodyContainer} onSubmit={() => handleUserSubmit()} >
         <div className={styles.usernameForm}>
           <div className={styles.usernameFormHeader}>Join WadsAbb</div>
           <div className={styles.usernameFormMiddle}>        
