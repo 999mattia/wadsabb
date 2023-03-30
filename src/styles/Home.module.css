@@ -146,3 +146,10 @@
 
 .loggedOut{
 }
+
+.formsLogout{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    gap: 1%;
+}
