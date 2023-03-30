@@ -89,10 +89,6 @@
     margin-top: 0.5em;
 }
 
-
-
-
-
 .container{
     width: 100%;
     max-height: calc(100vh - 80px);
@@ -142,28 +138,44 @@
     flex-direction: column;
 }
 
+.other{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+    margin-left: 5px;
+    padding-left: 10px;
+}
+
+.self{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5px;
+    padding-right: 10px;
+}
+
 .singleMessage{
     margin-bottom: 10px;
-    /*display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: flex-start;*/
     max-width: 50%;
     line-break: anywhere;
-    font-size: larg;
+    font-size: x-large;
 
-    
+    background: #eef8ff;
+    min-width: 50px;
+    padding: 10px;
+    border-radius: 10%;
+    word-break: break-all;
 }
 
-.username{
+.self .username{
     color: #01a91b;
-    font-size: medium;
+    font-size: large;
 }
 
-.loggedIn{
-}
-
-.loggedOut{
+.other .username{
+    color: rgb(66, 66, 244);
+    font-size: large;
 }
 
 .formsLogout{

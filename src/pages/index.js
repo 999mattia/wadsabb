@@ -95,10 +95,11 @@ export default function Home() {
           <div className={styles.allMessageContainer} ref={chatContainerRef}>
             {messages.map((message) => {
               return (
-                <div className={styles.singleMessage}>
-                  <p className={styles.username}>{message.user}</p>
-                  {message.user == user ? <div className={styles.loggedIn}><p>{message.text}</p></div> : <div className={styles.loggedOut}><p>{message.text}</p></div>}
-                  
+                <div className={`${message.user == user ? styles.self : styles.other}`}>
+                  <div className={styles.singleMessage}>
+                    <p className={styles.username}>{message.user}</p>
+                    {message.user == user ? <div><p>{message.text}</p></div> : <div className={styles.loggedOut}><p>{message.text}</p></div>}
+                  </div>
                 </div>
               )
             })}
