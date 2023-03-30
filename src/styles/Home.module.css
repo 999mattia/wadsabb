@@ -1,3 +1,31 @@
+.headerContainer {
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid;
+}
+
+.logo{
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    height: 100%;
+    width: auto;
+}
+
+.accountIcon{
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    height: 75%;
+    width: auto;
+}
+
+.headerFiller{
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
 .usernameForm{
     margin-top: 5vh;
     width: 100%;
@@ -74,10 +102,6 @@
 }
 
 
-
-
-
-
 .messageForm{
     position: absolute;
     left: 0;
@@ -85,31 +109,26 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    gap: 1%;
     height: 3em;
     padding: 0.3em;
     background-color: whitesmoke;
 }
 
 .messageInput{
-    width: 80%;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+    width: 90%;
     border: 2px solid #01a91b;
     border-radius: 5px;
 }
 
 .sendButtonContainer{
     width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .sendButton{
     background-color: transparent;
     border: none;
     display: flex;
-    align-items: center;
 }
 
 .sendButtonIcon{
